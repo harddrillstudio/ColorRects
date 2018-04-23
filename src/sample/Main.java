@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.animation.Animation;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -34,7 +36,8 @@ public class Main extends Application {
 
         }
 
-/*        Rectangle r = new Rectangle();
+/*
+        Rectangle r = new Rectangle();
         r.setX(180);
         r.setY(130);
         r.setWidth(40);
@@ -45,14 +48,19 @@ public class Main extends Application {
         r.setStrokeWidth(5);
         r.setRotate(45);
         r.setScaleX(2);
-        r.setScaleY(2);*/
+        r.setScaleY(2);
 
 
-//        root.getChildren().add(r);
-        root.getChildren().add(new Text(50, 50, "LOLZ IM GAY"));
+        root.getChildren().add(r);
+*/
         primaryStage.setScene(scene);
 
         primaryStage.show();
+
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(Animation.INDEFINITE);
+
+
     }
 
 

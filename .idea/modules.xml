@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HelloWorldFX.iml" filepath="$PROJECT_DIR$/HelloWorldFX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ColorRects.iml" filepath="$PROJECT_DIR$/ColorRects.iml" />
     </modules>
   </component>
 </project>
