@@ -1,18 +1,25 @@
 package sample;
 
-import javafx.animation.Animation;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Random;
+import javafx.util.Duration;
+
 
 public class Main extends Application {
+
+    private Integer frameCount = 0;
+    private AnimationTimer timer;
 
     @Override
     public void start(Stage primaryStage) {
@@ -35,6 +42,13 @@ public class Main extends Application {
             }
 
         }
+
+        Text gay = new Text(80, 160, "I'M GAY");
+        gay.setFont(Font.font("Verdana", 40));
+        gay.setFill(Color.BLACK);
+        gay.setStroke(Color.WHITE);
+
+        root.getChildren().add(gay);
 
 /*
         Rectangle r = new Rectangle();
@@ -59,7 +73,35 @@ public class Main extends Application {
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.setAutoReverse(true);
 
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                frameCount++;
+            }
+        };
+
+        KeyValue keyValueX = new KeyValue(root.scaleXProperty(), 2);
+        KeyValue keyValueY = new KeyValue(root.scaleYProperty(), 2);
+        
+        Duration duration = Duration.millis(200);
+        //one can add a specific action when the keyframe is reached
+        EventHandler onFinished = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+                //root.setTranslateX(Math.random()*200-100);
+                //reset counter
+                frameCount = 0;
+            }
+        };
+
+        KeyFrame keyFrame = new KeyFrame(duration, onFinished , keyValueX, keyValueY);
+
+        //add the keyframe to the timeline
+        timeline.getKeyFrames().add(keyFrame);
+
+        timeline.play();
+        timer.start();
 
     }
 
